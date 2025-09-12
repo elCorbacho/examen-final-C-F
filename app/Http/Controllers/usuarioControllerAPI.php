@@ -22,11 +22,11 @@ class usuarioControllerAPI extends Controller
                 'rut' => 'required|string|unique:usuarios,rut',
                 'nombre' => 'required|string|max:255',
                 'apellido' => 'required|string|max:255',
-                'correo' => 'required|email|unique:usuarios,correo|max:255',
+                'email' => 'required|email|unique:usuarios,email|max:255',
                 'password' => 'required|string|min:6'
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
-                'correo.unique' => 'El usuario ya existe con ese correo electrónico.'
+                'email.unique' => 'El usuario ya existe con ese correo electrónico.'
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json([
@@ -40,7 +40,7 @@ class usuarioControllerAPI extends Controller
             'rut' => $request->rut,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
-            'correo' => $request->correo,
+            'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
 
@@ -105,7 +105,7 @@ class usuarioControllerAPI extends Controller
             'rut' => 'sometimes|required|string|unique:usuarios,rut,' . $id,
             'nombre' => 'sometimes|required|string|max:255',
             'apellido' => 'sometimes|required|string|max:255',
-            'correo' => 'sometimes|required|email|unique:usuarios,correo,' . $id,
+            'email' => 'sometimes|required|email|unique:usuarios,email,' . $id,
             'password' => 'sometimes|required|string|min:6',
         ]);
         if (isset($validated['password'])) {

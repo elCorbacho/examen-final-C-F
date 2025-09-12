@@ -11,7 +11,7 @@ class usuarioSeeder extends Seeder
 {
     public function run(): void
     {
-        $usuarios = [
+        $usuario = [
             [
                 'rut' => '12345678-9',
                 'nombre' => 'Juan',
@@ -84,8 +84,8 @@ class usuarioSeeder extends Seeder
             ],
         ];
 
-        foreach ($usuarios as $usuario) {
-            usuario::create($usuario);
+        foreach ($usuario as $key => $value) {
+            usuario::create($value);
         }
     }
 }

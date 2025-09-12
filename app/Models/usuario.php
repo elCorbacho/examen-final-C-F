@@ -14,6 +14,8 @@ class usuario extends Authenticatable implements JWTSubject
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'usuario';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +25,7 @@ class usuario extends Authenticatable implements JWTSubject
         'rut',
         'nombre',
         'apellido',
-        'correo',
+        'email',
         'password',
     ];
 

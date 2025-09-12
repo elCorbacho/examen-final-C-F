@@ -8,13 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('producto', function (Blueprint $table) {
             $table->id();
             $table->string('sku', 20)->unique();
             $table->string('nombre', 80);
             $table->string('descripcion_corta', 100);
             $table->text('descripcion_larga');
-            $table->string('url_imagen', 300)->nullable();
+            $table->string('imagen_url', 300)->nullable();
             $table->decimal('precio_neto', 10, 2);
             $table->decimal('precio_con_iva', 10, 2);
             $table->unsignedInteger('stock_actual')->default(0);
@@ -27,6 +27,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('producto');
     }
 };

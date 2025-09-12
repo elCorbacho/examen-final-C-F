@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('cliente', function (Blueprint $table) {
             $table->id();
             $table->char('rut_empresa', 12)->unique();
             $table->string('rubro', 50);
@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('telefono', 20);
             $table->string('direccion', 200);
             $table->string('contacto_nombre', 70);
-            $table->string('contacto_email', 150);
+            $table->string('contacto_correo', 150);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('cliente');
     }
 };
