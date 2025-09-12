@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Producto;
+use App\Models\Productos;
 
-class productoSeeder extends Seeder
+class ProductosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -146,7 +146,7 @@ class productoSeeder extends Seeder
         ];
 
         foreach ($productos as $producto) {
-            Producto::create($producto);
+            Productos::create($producto);
         }
     }
 }

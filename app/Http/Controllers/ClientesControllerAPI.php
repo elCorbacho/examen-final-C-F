@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\cliente;
+use App\Models\Clientes;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
 
-class clienteControllerAPI extends Controller
+class ClientesControllerAPI extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class clienteControllerAPI extends Controller
     public function index()
     {
         //
-        $clientes = cliente::all();
+        $clientes = Clientes::all();
         return response()->json($clientes);
 
     }
@@ -29,7 +29,7 @@ class clienteControllerAPI extends Controller
         //
             {
         $validated = $request->validate([
-            'rut_empresa' => 'required|string|unique:clientes,rut_empresa',
+            'rut_empresa' => 'required|string|unique:cliente,rut_empresa',
             'rubro' => 'required|string|max:255',
             'razon_social' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
@@ -37,7 +37,7 @@ class clienteControllerAPI extends Controller
             'contacto_nombre' => 'required|string|max:255',
             'contacto_correo' => 'required|email|max:255',
         ]);
-        $cliente = cliente::create($validated);
+        $cliente = Clientes::create($validated);
         return response()->json($cliente, 201);
     }
 
@@ -50,7 +50,7 @@ class clienteControllerAPI extends Controller
      */
     public function show(string $id)
     {
-        $cliente = cliente::find($id);
+        $cliente = Clientes::find($id);
         if (!$cliente) {
             return response()->json(['message' => 'Cliente no encontrado'], 404);
         }
@@ -63,7 +63,7 @@ class clienteControllerAPI extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $cliente = cliente::find($id);
+        $cliente = Clientes::find($id);
         if (!$cliente) {
             return response()->json(['message' => 'Cliente no encontrado'], 404);
         }
@@ -87,7 +87,7 @@ class clienteControllerAPI extends Controller
     public function destroy(string $id)
     {
         //
-        $cliente = cliente::find($id);
+        $cliente = Clientes::find($id);
         if (!$cliente) {
             return response()->json(['message' => 'Cliente no encontrado'], 404);
         }

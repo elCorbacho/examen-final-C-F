@@ -2,20 +2,32 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\productoControllerAPI;
-use App\Http\Controllers\clienteControllerAPI;
-use App\Http\Controllers\usuarioControllerAPI;
+use App\Http\Controllers\ProductosControllerAPI;
+use App\Http\Controllers\ClientesControllerAPI;
+use App\Http\Controllers\UsuariosControllerAPI;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+//Route::get('/user', function (Request $request) {
+//return $request->user();
+//})->middleware('auth:sanctum');
 
-Route::post('/store', [usuarioControllerAPI::class, 'store']);
-Route::post('/login', [usuarioControllerAPI::class, 'loginApi']);
+Route::post('/store', [UsuariosControllerAPI::class, 'store']);
+Route::post('/login', [UsuariosControllerAPI::class, 'loginApi']);
 
 Route::middleware('auth:api')->group(function () {
     // Rutas protegidas por autenticación
-    Route::apiResource('productos', productoControllerAPI::class);
-    Route::apiResource('clientes', clienteControllerAPI::class);
-    Route::apiResource('usuarios', usuarioControllerAPI::class);
+    Route::apiResource('productos', ProductosControllerAPI::class);
+    Route::apiResource('clientes', ClientesControllerAPI::class);
+    Route::apiResource('usuarios', UsuariosControllerAPI::class);
+    Route::fallback(function () {
+    return response()->json([
+        'message' => 'La ruta solicitada no existe en la API.'
+    ], 404);
 });
+});
+
+Route::fallback(function () {
+    return response()->json([
+        'message' => 'La ruta solicitada no existe en la API.'
+    ], 404);
+});
+
