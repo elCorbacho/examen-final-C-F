@@ -12,9 +12,8 @@ class usuarioControllerAPI extends Controller
 {
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
+// realiza un post de un usuario
+// no se encuentra protegido por autenticacion
     public function store(Request $request)
     {
         try {
@@ -51,8 +50,9 @@ class usuarioControllerAPI extends Controller
     }
 
 
-
-
+// realiza un post para login
+// no se encuentra protegido por autenticacion
+// devuelve un token JWT si las credenciales son correctas
     public function loginApi(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -69,35 +69,52 @@ class usuarioControllerAPI extends Controller
     }
 
 
-    /**
-     * Display a listing of the resource.
-     */
+
+    // get de todos los usuarios
     public function index()
     {
         //
         $usuarios = usuario::all();
-        return response()->json($usuarios);
+        if($usuarios->isEmpty()) {
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'No hay usuarios disponibles'
+            ], 404);
+        }
+        return response()->json([
+            'status' => 'success',
+            'data' => $usuarios,
+            'message' => 'Usuarios obtenidos exitosamente'
+        ], 200);
     }
 
 
-    /**
-     * Display the specified resource.
-     */
+
+    // get de un usuario por id
     public function show(string $id)
     {
         //
         $usuario = usuario::find($id);
         if (!$usuario) {
-            return response()->json(['message' => 'Usuario no encontrado'], 404);
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'Usuario no encontrado'
+            ], 404);
         }
-        return response()->json($usuario);
+        return response()->json(
+            [
+                'status' => 'success',
+                'data' => $usuario,
+                'message' => 'Usuario obtenido exitosamente'
+            ], 200);
     }
 
 
 
-    /**
-     * Update the specified resource in storage.
-     */
+
+    // update de un usuario por id
     public function update(Request $request, string $id)
     {
         $usuario = usuario::find($id);
@@ -118,16 +135,22 @@ class usuarioControllerAPI extends Controller
         return response()->json($usuario);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // delete de un usuario por id
     public function destroy(string $id)
     {
         $usuario = usuario::find($id);
         if (!$usuario) {
-            return response()->json(['message' => 'Usuario no encontrado'], 404);
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'Usuario no encontrado'
+            ], 404);
         }
         $usuario->delete();
-        return response()->json(['message' => 'Usuario eliminado con éxito']);
+        return response()->json([
+            'status' => 'success',
+            'data' => null,
+            'message' => 'Usuario eliminado con éxito'
+        ], 200);
     }
 }
