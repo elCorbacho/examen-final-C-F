@@ -6,9 +6,9 @@ use App\Http\Controllers\productoControllerAPI;
 use App\Http\Controllers\clienteControllerAPI;
 use App\Http\Controllers\usuarioControllerAPI;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+//Route::get('/user', function (Request $request) {
+//return $request->user();
+//})->middleware('auth:sanctum');
 
 Route::post('/store', [usuarioControllerAPI::class, 'store']);
 Route::post('/login', [usuarioControllerAPI::class, 'loginApi']);

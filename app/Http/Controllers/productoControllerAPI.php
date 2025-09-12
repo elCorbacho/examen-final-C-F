@@ -5,46 +5,77 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class productoControllerAPI extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    // realiza un get de todos los productos
     public function index()
     {
-        //
         $productos = producto::all();
-        return response()->json($productos);
+        //
+        if($productos->isEmpty()){
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'No hay productos disponibles',
+            ], 404);
+        }
+        return response()->json([
+            'status' => 'success',
+            'data' => $productos,
+            'message' => 'Productos obtenidos exitosamente',
+        ], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // realiza un post de un producto
     public function store(Request $request)
     {
-        //
-        $validated = $request->validate([
-        'sku' => 'required|string|unique:producto,sku',
-        'nombre' => 'required|string|max:255',
-        'descripcion_corta' => 'required|string|max:255',
-        'descripcion_larga' => 'nullable|string',
-        'imagen_url' => 'nullable|string|max:255',
-        'precio_neto' => 'required|numeric|min:0',
-        'precio_con_iva' => 'required|numeric|min:0',
-        'stock_actual' => 'required|integer|min:0',
-        'stock_minimo' => 'required|integer|min:0',
-        'stock_bajo' => 'required|integer|min:0',
-        'stock_alto' => 'required|integer|min:0',
-    ]);
-    $producto = producto::create($validated);
-    return response()->json($producto, 201);
+        try {
+            $validated = $request->validate([
+                'sku' => 'required|string|unique:producto,sku',
+                'nombre' => 'required|string|max:255',
+                'descripcion_corta' => 'required|string|max:255',
+                'descripcion_larga' => 'nullable|string',
+                'imagen_url' => 'nullable|string|max:255',
+                'precio_neto' => 'required|numeric|min:0',
+                'precio_con_iva' => 'required|numeric|min:0',
+                'stock_actual' => 'required|integer|min:0',
+                'stock_minimo' => 'required|integer|min:0',
+                'stock_bajo' => 'required|integer|min:0',
+                'stock_alto' => 'required|integer|min:0',
+            ]);
+        } catch (ValidationException $e) { // captura errores de validacion
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'todos los campos son obligatorios o el SKU ya existe',
+                'errors' => $e->errors(),
+            ], 422);
 
+        }
+
+        try {
+            $producto = producto::create($validated);
+            return response()->json([
+                'status' => 'success',
+                'data' => $producto,
+                'message' => 'Producto creado exitosamente',
+            ], 201);
+        } catch (\Exception $e) { // captura cualquier otro error
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => 'Error al crear el producto',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
+
+    // realiza un get de un producto por id
     public function show(string $id)
     {
         //
