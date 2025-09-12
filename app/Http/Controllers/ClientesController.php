@@ -7,7 +7,7 @@ use App\Models\usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-class usuarioController extends Controller
+class ClientesController extends Controller
 {
     /**
      * Display a listing of the resource.
