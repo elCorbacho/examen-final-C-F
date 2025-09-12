@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\cliente;
+use App\Models\Clientes;
 
-class clienteSeeder extends Seeder
+class ClientesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -106,7 +106,7 @@ class clienteSeeder extends Seeder
         ];
 
         foreach ($clientes as $clienteData) {
-            cliente::create($clienteData);
+            Clientes::create($clienteData);
         }
     }
 }

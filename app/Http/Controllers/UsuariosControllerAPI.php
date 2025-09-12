@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\usuario;
+use App\Models\Usuarios;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
 
-class usuarioControllerAPI extends Controller
+class UsuariosControllerAPI extends Controller
 {
 
 
@@ -35,7 +35,7 @@ class usuarioControllerAPI extends Controller
             ], 422);
         }
 
-        $user = usuario::create([
+        $user = Usuarios::create([
             'rut' => $request->rut,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
@@ -74,7 +74,7 @@ class usuarioControllerAPI extends Controller
     public function index()
     {
         //
-        $usuarios = usuario::all();
+        $usuarios = Usuarios::all();
         if($usuarios->isEmpty()) {
             return response()->json([
                 'status' => 'error',
@@ -95,7 +95,7 @@ class usuarioControllerAPI extends Controller
     public function show(string $id)
     {
         //
-        $usuario = usuario::find($id);
+        $usuario = Usuarios::find($id);
         if (!$usuario) {
             return response()->json([
                 'status' => 'error',
@@ -117,7 +117,7 @@ class usuarioControllerAPI extends Controller
     // update de un usuario por id
     public function update(Request $request, string $id)
     {
-        $usuario = usuario::find($id);
+        $usuario = Usuarios::find($id);
         if (!$usuario) {
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
@@ -138,7 +138,7 @@ class usuarioControllerAPI extends Controller
     // delete de un usuario por id
     public function destroy(string $id)
     {
-        $usuario = usuario::find($id);
+        $usuario = Usuarios::find($id);
         if (!$usuario) {
             return response()->json([
                 'status' => 'error',

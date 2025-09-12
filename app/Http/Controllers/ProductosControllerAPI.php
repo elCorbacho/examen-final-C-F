@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use App\Models\Productos;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
-class productoControllerAPI extends Controller
+class ProductosControllerAPI extends Controller
 {
 
     // realiza un get de todos los productos
     public function index()
     {
-        $productos = producto::all();
+        $productos = Productos::all();
         //
         if($productos->isEmpty()){
             return response()->json([
@@ -34,7 +34,7 @@ class productoControllerAPI extends Controller
     public function show(string $id)
     {
         //
-        $producto = producto::find($id);
+        $producto = Productos::find($id);
         if (!$producto) {
             return response()->json([
                 'status' => 'error',
@@ -79,7 +79,7 @@ class productoControllerAPI extends Controller
         }
 
         try {
-            $producto = producto::create($validated);
+            $producto = Productos::create($validated);
             return response()->json([
                 'status' => 'success',
                 'data' => $producto,
@@ -100,7 +100,7 @@ class productoControllerAPI extends Controller
     // realiza un put de un producto por id
     public function update(Request $request, string $id)
     {
-        $producto = Producto::find($id);
+        $producto = Productos::find($id);
         if (!$producto) {
             return response()->json([
                 'status' => 'error',
@@ -189,7 +189,7 @@ class productoControllerAPI extends Controller
     public function destroy(string $id)
     {
         //
-        $producto = Producto::find($id);
+        $producto = Productos::find($id);
         if (!$producto) {
             return response()->json([
                 'status' => 'error',

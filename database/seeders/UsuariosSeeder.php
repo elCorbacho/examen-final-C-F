@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\usuario;
+use App\Models\Usuarios;
 
 use Illuminate\Support\Facades\Hash;
 
-class usuarioSeeder extends Seeder
+class UsuariosSeeder extends Seeder
 {
     public function run(): void
     {
@@ -85,7 +85,7 @@ class usuarioSeeder extends Seeder
         ];
 
         foreach ($usuario as $key => $value) {
-            usuario::create($value);
+            Usuarios::create($value);
         }
     }
 }
