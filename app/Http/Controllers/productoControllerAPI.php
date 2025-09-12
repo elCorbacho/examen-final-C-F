@@ -25,7 +25,7 @@ class productoControllerAPI extends Controller
     {
         //
         $validated = $request->validate([
-        'sku' => 'required|string|unique:productos,sku',
+        'sku' => 'required|string|unique:producto,sku',
         'nombre' => 'required|string|max:255',
         'descripcion_corta' => 'required|string|max:255',
         'descripcion_larga' => 'nullable|string',

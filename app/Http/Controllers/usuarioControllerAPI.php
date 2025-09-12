@@ -105,10 +105,10 @@ class usuarioControllerAPI extends Controller
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
         $validated = $request->validate([
-            'rut' => 'sometimes|required|string|unique:usuarios,rut,' . $id,
+            'rut' => 'sometimes|required|string|unique:usuario,rut,' . $id,
             'nombre' => 'sometimes|required|string|max:255',
             'apellido' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:usuarios,email,' . $id,
+            'email' => 'sometimes|required|email|unique:usuario,email,' . $id,
             'password' => 'sometimes|required|string|min:6',
         ]);
         if (isset($validated['password'])) {

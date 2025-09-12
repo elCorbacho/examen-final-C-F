@@ -29,7 +29,7 @@ class clienteControllerAPI extends Controller
         //
             {
         $validated = $request->validate([
-            'rut_empresa' => 'required|string|unique:clientes,rut_empresa',
+            'rut_empresa' => 'required|string|unique:cliente,rut_empresa',
             'rubro' => 'required|string|max:255',
             'razon_social' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
