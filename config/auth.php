@@ -59,10 +59,19 @@ return [
     |
     */
 
+//RESPALDO DE USER JWT
+    //'providers' => [
+    //    'users' => [
+    //        'driver' => 'eloquent',
+    //        'model' => env('AUTH_MODEL', App\Models\User::class),
+    //    ],
+
+
+
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\usuario::class,
         ],
 
         // 'users' => [
