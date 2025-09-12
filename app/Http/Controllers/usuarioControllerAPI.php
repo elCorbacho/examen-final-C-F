@@ -19,10 +19,10 @@ class usuarioControllerAPI extends Controller
     {
         try {
             $request->validate([
-                'rut' => 'required|string|unique:usuarios,rut',
+                'rut' => 'required|string|unique:usuario,rut',
                 'nombre' => 'required|string|max:255',
                 'apellido' => 'required|string|max:255',
-                'email' => 'required|email|unique:usuarios,email|max:255',
+                'email' => 'required|email|unique:usuario,email|max:255',
                 'password' => 'required|string|min:6'
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
@@ -49,6 +49,9 @@ class usuarioControllerAPI extends Controller
             'status' => 'success',
             'user' => $user, 'token' => $token], 201);
     }
+
+
+
 
     public function loginApi(Request $request)
     {
