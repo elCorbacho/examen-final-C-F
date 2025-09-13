@@ -115,7 +115,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
+    |---------------------------------------------------------------------------
     |
     | Here you may define the amount of seconds before a password confirmation
     | window expires and users are asked to re-enter their password via the
