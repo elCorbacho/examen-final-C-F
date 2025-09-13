@@ -12,6 +12,7 @@ use \Illuminate\Validation\ValidationException;
 class UsuariosControllerAPI extends Controller
 {
 
+    //MENSAJES DE ERROR Y EXITO EN FORMATO JSON OK
 
 // realiza un post de un usuario
 // no se encuentra protegido por autenticacion
@@ -28,7 +29,7 @@ class UsuariosControllerAPI extends Controller
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
                 'email.unique' => 'El usuario ya existe con ese correo electrónico.'
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Error de validación',
