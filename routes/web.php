@@ -26,12 +26,11 @@ Route::post('/register', [UsuariosController::class, 'register'])->name('registe
 
 
 
-// CRUD de usuarios (protegido por sesión)
-Route::resource('usuarios', UsuariosController::class);
-// CRUD de productos
-Route::resource('productos', ProductosController::class);
-// CRUD de clientes
-Route::resource('clientes', ClientesController::class);
 
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Rutas protegidas por sesión
+Route::middleware('auth')->group(function () {
+    Route::resource('usuarios', UsuariosController::class);
+    Route::resource('productos', ProductosController::class);
+    Route::resource('clientes', ClientesController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});

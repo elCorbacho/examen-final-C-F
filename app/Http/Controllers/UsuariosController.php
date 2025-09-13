@@ -4,52 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
-    //-------------------------------------------------
-    //VISTA INICIAL DE APLICACION
     // Mostrar formulario de login
-    //-------------------------------------------------
-
     public function showLoginForm()
     {
         return view('usuarios.login');
     }
 
-
     // Procesar login
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|string',
         ]);
 
-        $usuario = Usuarios::where('email', $request->email)->first();
-        if ($usuario && Hash::check($request->password, $usuario->password)) {
-            session(['usuario_id' => $usuario->id, 'usuario_nombre' => $usuario->nombre]);
-            return redirect()->route('usuarios.index')->with('success', 'Sesión iniciada correctamente.');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/usuarios');
         }
-        return back()->withErrors(['email' => 'Credenciales incorrectas'])->withInput();
+
+        return back()->withErrors([
+            'email' => 'Credenciales incorrectas.',
+        ]);
     }
 
-    //------------------------------------------------
-
-
-
-    //------------------------------------------------
     // Cerrar sesión
-    public function logout()
+    public function logout(Request $request)
     {
-        session()->forget(['usuario_id', 'usuario_nombre']);
-        return redirect()->route('login')->with('success', 'Sesión cerrada.');
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
-    //------------------------------------------------
 
-
-    //------------------------------------------------
     // Mostrar formulario de registro
     public function showRegisterForm()
     {
@@ -59,77 +51,53 @@ class UsuariosController extends Controller
     // Procesar registro
     public function register(Request $request)
     {
-        $request->validate([
-            'rut' => 'required|string|max:20|unique:usuario,rut',
+        $validated = $request->validate([
+            'rut' => 'required|string|unique:usuario,rut',
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'email' => 'required|email|unique:usuario,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $usuario = new Usuarios();
-        $usuario->rut = $request->rut;
-        $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
-        $usuario->email = $request->email;
-        $usuario->password = Hash::make($request->password);
-        $usuario->save();
+        $validated['password'] = Hash::make($validated['password']);
+        Usuarios::create($validated);
 
-        session(['usuario_id' => $usuario->id, 'usuario_nombre' => $usuario->nombre]);
-        return redirect()->route('usuarios.index')->with('success', 'Usuario registrado y sesión iniciada.');
+        return redirect('/login')->with('success', 'Usuario registrado correctamente.');
     }
-    //----------------------------------------------------
 
-
-    //------------------------------------------------
-    //PAGINA INICIAL TRAS LOGIN
     // Listar usuarios
-    //--------------------------------------------------
-
     public function index()
     {
-        $this->checkSession();
         $usuarios = Usuarios::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
-
     // Mostrar formulario de creación
     public function create()
     {
-        $this->checkSession();
         return view('usuarios.create');
     }
 
     // Guardar nuevo usuario
     public function store(Request $request)
     {
-        $this->checkSession();
-        $request->validate([
-            'rut' => 'required|string|max:20|unique:usuario,rut',
+        $validated = $request->validate([
+            'rut' => 'required|string|unique:usuario,rut',
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'email' => 'required|email|unique:usuario,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $usuario = new Usuarios();
-        $usuario->rut = $request->rut;
-        $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
-        $usuario->email = $request->email;
-        $usuario->password = Hash::make($request->password);
-        $usuario->save();
+        $validated['password'] = Hash::make($validated['password']);
+        Usuarios::create($validated);
 
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado correctamente.');
     }
 
-
-
-    // Mostrar usuario
+    // Mostrar un usuario
     public function show($id)
     {
-        $this->checkSession();
         $usuario = Usuarios::findOrFail($id);
         return view('usuarios.show', compact('usuario'));
     }
@@ -137,7 +105,6 @@ class UsuariosController extends Controller
     // Mostrar formulario de edición
     public function edit($id)
     {
-        $this->checkSession();
         $usuario = Usuarios::findOrFail($id);
         return view('usuarios.edit', compact('usuario'));
     }
@@ -145,54 +112,33 @@ class UsuariosController extends Controller
     // Actualizar usuario
     public function update(Request $request, $id)
     {
-        $this->checkSession();
         $usuario = Usuarios::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
+            'rut' => 'required|string|unique:usuario,rut,' . $id,
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuario,email,' . $usuario->id,
-            'password' => 'nullable|min:6|confirmed',
+            'email' => 'required|email|unique:usuario,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed',
         ]);
 
-        $cambios = [];
-        if ($usuario->nombre !== $request->nombre) {
-            $cambios[] = "Nombre: '{$usuario->nombre}' → '{$request->nombre}'";
-            $usuario->nombre = $request->nombre;
-        }
-        if ($usuario->apellido !== $request->apellido) {
-            $cambios[] = "Apellido: '{$usuario->apellido}' → '{$request->apellido}'";
-            $usuario->apellido = $request->apellido;
-        }
-        if ($usuario->email !== $request->email) {
-            $cambios[] = "Email: '{$usuario->email}' → '{$request->email}'";
-            $usuario->email = $request->email;
-        }
-        if ($request->filled('password')) {
-            $cambios[] = "Contraseña actualizada";
-            $usuario->password = Hash::make($request->password);
+        if (!empty($validated['password'])) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
         }
 
-        $usuario->save();
+        $usuario->update($validated);
 
-        $mensaje = $cambios ? 'Actualización: ' . implode(', ', $cambios) : 'No hubo cambios.';
-        return redirect()->route('usuarios.index')->with('success', $mensaje);
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
     }
 
     // Eliminar usuario
     public function destroy($id)
     {
-        $this->checkSession();
         $usuario = Usuarios::findOrFail($id);
         $usuario->delete();
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
-    }
 
-    // Validar sesión
-    private function checkSession()
-    {
-        if (!session('usuario_id')) {
-            abort(403, 'No autenticado.');
-        }
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }
