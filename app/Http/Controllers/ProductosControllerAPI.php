@@ -11,6 +11,9 @@ use Illuminate\Validation\ValidationException;
 class ProductosControllerAPI extends Controller
 {
 
+
+    //MENSAJES DE ERROR Y EXITO EN FORMATO JSON OK
+
     // realiza un get de todos los productos
     public function index()
     {
