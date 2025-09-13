@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\DashboardController;
 
 // Ruta principal: si no hay sesión, redirige a login
 Route::get('/', function () {
@@ -22,10 +25,13 @@ Route::get('/register', [UsuariosController::class, 'showRegisterForm'])->name('
 Route::post('/register', [UsuariosController::class, 'register'])->name('register.post');
 
 
-use App\Http\Controllers\ProductosController;
+
 // CRUD de usuarios (protegido por sesión)
 Route::resource('usuarios', UsuariosController::class);
 // CRUD de productos
 Route::resource('productos', ProductosController::class);
+// CRUD de clientes
+Route::resource('clientes', ClientesController::class);
 
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
