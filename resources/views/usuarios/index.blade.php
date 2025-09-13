@@ -14,7 +14,9 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>RUT</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
                 <th>Acciones</th>
             </tr>
@@ -23,7 +25,9 @@
             @foreach($usuarios as $usuario)
                 <tr>
                     <td>{{ $usuario->id }}</td>
+                    <td>{{ $usuario->rut }}</td>
                     <td>{{ $usuario->nombre }}</td>
+                    <td>{{ $usuario->apellido }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>
                         <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm">Ver</a>

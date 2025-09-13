@@ -15,8 +15,16 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
+            <label for="rut" class="form-label">RUT</label>
+            <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut', $usuario->rut) }}" required>
+        </div>
+        <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $usuario->nombre) }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido', $usuario->apellido) }}" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>

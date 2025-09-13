@@ -14,8 +14,16 @@
     <form method="POST" action="{{ route('register.post') }}">
         @csrf
         <div class="mb-3">
+            <label for="rut" class="form-label">RUT</label>
+            <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}" required>
+        </div>
+        <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>

@@ -60,13 +60,17 @@ class UsuariosController extends Controller
     public function register(Request $request)
     {
         $request->validate([
+            'rut' => 'required|string|max:20|unique:usuario,rut',
             'nombre' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuario,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
         $usuario = new Usuarios();
+        $usuario->rut = $request->rut;
         $usuario->nombre = $request->nombre;
+        $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->save();
@@ -102,13 +106,17 @@ class UsuariosController extends Controller
     {
         $this->checkSession();
         $request->validate([
+            'rut' => 'required|string|max:20|unique:usuario,rut',
             'nombre' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuario,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
         $usuario = new Usuarios();
+        $usuario->rut = $request->rut;
         $usuario->nombre = $request->nombre;
+        $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->save();
@@ -142,7 +150,8 @@ class UsuariosController extends Controller
 
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email,' . $usuario->id,
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuario,email,' . $usuario->id,
             'password' => 'nullable|min:6|confirmed',
         ]);
 
@@ -150,6 +159,10 @@ class UsuariosController extends Controller
         if ($usuario->nombre !== $request->nombre) {
             $cambios[] = "Nombre: '{$usuario->nombre}' → '{$request->nombre}'";
             $usuario->nombre = $request->nombre;
+        }
+        if ($usuario->apellido !== $request->apellido) {
+            $cambios[] = "Apellido: '{$usuario->apellido}' → '{$request->apellido}'";
+            $usuario->apellido = $request->apellido;
         }
         if ($usuario->email !== $request->email) {
             $cambios[] = "Email: '{$usuario->email}' → '{$request->email}'";
