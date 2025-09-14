@@ -33,8 +33,8 @@ class ClientesController extends Controller
             'contacto_correo' => 'nullable|email|max:100',
         ]);
 
-        Clientes::create($request->all());
-        return redirect()->route('clientes.index')->with('success', 'Cliente creado correctamente.');
+    Clientes::create($request->all());
+    return redirect()->route('clientes.index')->with('success', 'Cliente creado correctamente.');
     }
 
     // Mostrar cliente
@@ -80,7 +80,7 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         $cliente = Clientes::findOrFail($id);
-        $cliente->delete();
-        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente.');
+    $cliente->delete();
+    return redirect()->route('clientes.index')->with('deleted', 'Cliente eliminado correctamente.');
     }
 }

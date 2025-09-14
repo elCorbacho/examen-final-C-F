@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
-    // Mostrar formulario de login
+    // MOSTRAR VISTA DE LOGIN CON LA VISTA LOGIN
     public function showLoginForm()
     {
         return view('usuarios.login');
     }
 
-    // Procesar login
+    // PROCESA EL LOGIN Y VALIDA
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -31,7 +31,7 @@ class UsuariosController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/usuarios');
+            return redirect()->intended('/usuarios')->with('login_success', '¡Bienvenido, has iniciado sesión correctamente!');
         }
 
         return back()->withErrors([
@@ -39,7 +39,7 @@ class UsuariosController extends Controller
         ]);
     }
 
-    // Cerrar sesión
+    // CIERRA LA SESION Y REDIRIGE AL LOGIN
     public function logout(Request $request)
     {
         Auth::logout();
@@ -48,13 +48,13 @@ class UsuariosController extends Controller
         return redirect('/login');
     }
 
-    // Mostrar formulario de registro
+    // MOSTRAR VISTA DE REGISTRO
     public function showRegisterForm()
     {
         return view('usuarios.register');
     }
 
-    // Procesar registro
+    // PROCESAR REGISTRO DE USUARIO
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -75,23 +75,23 @@ class UsuariosController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         Usuarios::create($validated);
 
-        return redirect('/login')->with('success', 'Usuario registrado correctamente.');
+        return redirect()->route('register')->with('success', 'Nuevo usuario registrado. Por favor, realice el login.');
     }
 
-    // Listar usuarios
+    // LISTAR USUARIOS CON LA VISTA INDEX
     public function index()
     {
         $usuarios = Usuarios::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
-    // Mostrar formulario de creación
+    // MOSTRAR VISTA DE CREACIÓN
     public function create()
     {
         return view('usuarios.create');
     }
 
-    // Guardar nuevo usuario
+    // GESTIONA LA CREACIÓN DE USUARIO POST
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -121,7 +121,7 @@ class UsuariosController extends Controller
             'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl, sin números.',
         ]);
 
-        // Validación adicional para coincidencia exacta
+        // VALIDACION PARA NOMBRE APELLIDO EN EL CORREO
         $nombre = strtolower(str_replace(' ', '', $request->nombre));
         $apellido = strtolower(str_replace(' ', '', $request->apellido));
         $emailEsperado = $nombre . '.' . $apellido . '@ventasfix.cl';
@@ -136,19 +136,20 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado correctamente.');
     }
 
-    // Mostrar un usuario
+    // MOSTRAR USUARIO ESPECÍFICO GET ID CON LA VISTA SHOW
     public function show($id)
     {
         $usuario = Usuarios::findOrFail($id);
         return view('usuarios.show', compact('usuario'));
     }
 
-    // Mostrar formulario de edición
+    // AL EDITAR MOSTRAR VISTA DE EDICIÓN
     public function edit($id)
     {
         $usuario = Usuarios::findOrFail($id);
         return view('usuarios.edit', compact('usuario'));
     }
+
 
     // Actualizar usuario
     public function update(Request $request, $id)
@@ -182,7 +183,8 @@ class UsuariosController extends Controller
             'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl, sin números.',
         ]);
 
-        // Validación adicional para coincidencia exacta
+
+        // Validación adicional para coincidencia exacta entre nombre apellido y correo
         $nombre = strtolower(str_replace(' ', '', $request->nombre));
         $apellido = strtolower(str_replace(' ', '', $request->apellido));
         $emailEsperado = $nombre . '.' . $apellido . '@ventasfix.cl';
@@ -202,7 +204,8 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
     }
 
-    // Eliminar usuario
+
+    // Eliminar usuario y devuelve la vista index
     public function destroy($id)
     {
         $usuario = Usuarios::findOrFail($id);

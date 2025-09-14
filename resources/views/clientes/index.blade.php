@@ -12,8 +12,63 @@
                     <a href="{{ route('clientes.create') }}" class="btn btn-success">Nuevo cliente</a>
                 </div>
                 @if(session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
+                    <!-- Modal Vuexy de éxito al crear cliente -->
+                    <div class="modal fade" id="creacionExitoModal" tabindex="-1" aria-labelledby="creacionExitoLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 shadow">
+                          <div class="modal-header bg-success text-white rounded-top">
+                            <h5 class="modal-title" id="creacionExitoLabel">
+                              <i class="ti ti-check-circle me-2"></i>Cliente creado
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <i class="ti ti-check display-4 text-success mb-3"></i>
+                            <p class="mb-0">{{ session('success') }}</p>
+                          </div>
+                          <div class="modal-footer border-0 justify-content-center">
+                            <button type="button" class="btn" style="background-color: #7367f0; color: #fff;" data-bs-dismiss="modal">Aceptar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                        var modal = new bootstrap.Modal(document.getElementById('creacionExitoModal'));
+                        modal.show();
+                      });
+                    </script>
                 @endif
+
+                @if(session('deleted'))
+                    <!-- Modal Vuexy de éxito al eliminar cliente -->
+                    <div class="modal fade" id="eliminacionExitoModal" tabindex="-1" aria-labelledby="eliminacionExitoLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 shadow">
+                          <div class="modal-header bg-danger text-white rounded-top">
+                            <h5 class="modal-title" id="eliminacionExitoLabel">
+                              <i class="ti ti-trash me-2"></i>Cliente eliminado
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <i class="ti ti-trash display-4 text-danger mb-3"></i>
+                            <p class="mb-0">{{ session('deleted') }}</p>
+                          </div>
+                          <div class="modal-footer border-0 justify-content-center">
+                            <button type="button" class="btn" style="background-color: #7367f0; color: #fff;" data-bs-dismiss="modal">Aceptar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                        var modal = new bootstrap.Modal(document.getElementById('eliminacionExitoModal'));
+                        modal.show();
+                      });
+                    </script>
+                @endif
+
                 <div class="card shadow-sm">
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -42,11 +97,11 @@
                                                 <div class="btn-group" role="group" aria-label="Acciones">
                                                     <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-info btn-sm" title="Ver"><i class="ti ti-eye"></i></a>
                                                     <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm" title="Editar"><i class="ti ti-pencil"></i></a>
-                                                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-outline-danger btn-sm" title="Eliminar" onclick="return confirm('¿Seguro?')"><i class="ti ti-trash"></i></button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" title="Eliminar" onclick="mostrarModalEliminarCliente('form-eliminar-{{ $cliente->id }}')"><i class="ti ti-trash"></i></button>
+<form id="form-eliminar-{{ $cliente->id }}" action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:none;">
+    @csrf
+    @method('DELETE')
+</form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -61,4 +116,38 @@
         <!-- /Clientes Card -->
     </div>
 </div>
+
+<!-- Modal Eliminar Cliente (Vuexy style) -->
+<div class="modal fade" id="eliminarClienteModal" tabindex="-1" aria-labelledby="eliminarClienteLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-danger text-white rounded-top">
+        <h5 class="modal-title" id="eliminarClienteLabel">
+          <i class="ti ti-trash me-2"></i>Eliminar cliente
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="mb-0">¿Seguro que deseas eliminar este cliente?</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-danger px-4" id="confirmarEliminarCliente">Sí</button>
+        <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  let formEliminarClienteId = null;
+  function mostrarModalEliminarCliente(formId) {
+    formEliminarClienteId = formId;
+    var modal = new bootstrap.Modal(document.getElementById('eliminarClienteModal'));
+    modal.show();
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('confirmarEliminarCliente').onclick = function() {
+      if(formEliminarClienteId) document.getElementById(formEliminarClienteId).submit();
+    };
+  });
+</script>
 @endsection

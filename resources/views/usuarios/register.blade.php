@@ -9,15 +9,47 @@
                     <h4 class="mb-2">Crear cuenta</h4>
                     <p class="mb-4">Completa el formulario para registrarte</p>
                 </div>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                                @if($errors->any())
+                                        <div class="alert alert-danger">
+                                                <ul class="mb-0">
+                                                        @foreach($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                        @endforeach
+                                                </ul>
+                                        </div>
+                                @endif
+
+                                @if(session('success'))
+<!-- Modal Vuexy de éxito al registrar usuario -->
+<div class="modal fade" id="registroExitoModal" tabindex="-1" aria-labelledby="registroExitoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-success text-white rounded-top">
+                <h5 class="modal-title" id="registroExitoLabel">
+                    <i class="ti ti-check-circle me-2"></i>Registro exitoso
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="ti ti-check display-4 text-success mb-3"></i>
+                <p class="mb-0">{{ session('success') }}</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn" style="background-color: #7367f0; color: #fff;" data-bs-dismiss="modal" id="aceptarRegistroBtn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = new bootstrap.Modal(document.getElementById('registroExitoModal'));
+        modal.show();
+        document.getElementById('aceptarRegistroBtn').addEventListener('click', function() {
+            window.location.href = "{{ route('login') }}";
+        });
+    });
+</script>
+@endif
                 <form method="POST" action="{{ route('register.post') }}" class="mb-3">
                     @csrf
                     <div class="mb-3">
