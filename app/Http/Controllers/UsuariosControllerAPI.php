@@ -17,26 +17,49 @@ class UsuariosControllerAPI extends Controller
         try {
             $request->validate([
                 'rut' => 'required|string|unique:usuario,rut',
-                'nombre' => 'required|string|max:255',
-                'apellido' => 'required|string|max:255',
+                'nombre' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+                ],
+                'apellido' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+                ],
                 'email' => [
                     'required',
                     'email',
                     'unique:usuario,email',
-                    'max:255',
-                    'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+                    // El regex solo permite letras y debe coincidir con nombre.apellido@ventasfix.cl
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\.{1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]+@ventasfix\.cl$/'
                 ],
                 'password' => 'required|string|min:6'
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
                 'email.unique' => 'El usuario ya existe con ese correo electrónico.',
-                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl'
+                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl y coincidir exactamente con los campos nombre y apellido.',
+                'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
+                'apellido.regex' => 'El apellido solo puede contener letras y espacios.',
             ]);
         } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Error de validación',
                 'errors' => $e->errors()
+            ], 422);
+        }
+
+        $nombre = strtolower(str_replace(' ', '', $request->nombre));
+        $apellido = strtolower(str_replace(' ', '', $request->apellido));
+        $emailEsperado = $nombre . '.' . $apellido . '@ventasfix.cl';
+
+        if (strtolower($request->email) !== $emailEsperado) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'El correo debe ser exactamente igual a nombre.apellido@ventasfix.cl, usando los valores ingresados en nombre y apellido.'
             ], 422);
         }
 
@@ -122,21 +145,35 @@ class UsuariosControllerAPI extends Controller
         try {
             $validated = $request->validate([
                 'rut' => 'sometimes|required|string|unique:usuario,rut,' . $id,
-                'nombre' => 'sometimes|required|string|max:255',
-                'apellido' => 'sometimes|required|string|max:255',
+                'nombre' => [
+                    'sometimes',
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+                ],
+                'apellido' => [
+                    'sometimes',
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+                ],
                 'email' => [
                     'sometimes',
                     'required',
                     'email',
                     'unique:usuario,email,' . $id,
                     'max:255',
-                    'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+                    'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\.{1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]+@ventasfix\.cl$/'
                 ],
                 'password' => 'sometimes|required|string|min:6',
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
                 'email.unique' => 'El usuario ya existe con ese correo electrónico.',
-                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl'
+                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl',
+                'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
+                'apellido.regex' => 'El apellido solo puede contener letras y espacios.',
             ]);
         } catch (ValidationException $e) {
             return response()->json([

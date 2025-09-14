@@ -33,8 +33,14 @@
                         <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" required placeholder="Tu apellido">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required placeholder="ejemplo@email.com">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                               id="email" name="email" value="{{ old('email') }}" required
+                               placeholder="nombre.apellido@ventasfix.cl">
+                        <div class="form-text">Debe tener el formato nombre.apellido@ventasfix.cl</div>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 form-password-toggle">
                         <label for="password" class="form-label">Contraseña</label>

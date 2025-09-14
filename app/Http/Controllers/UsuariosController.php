@@ -19,8 +19,14 @@ class UsuariosController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+            ],
             'password' => 'required|string',
+        ], [
+            'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl',
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -55,8 +61,15 @@ class UsuariosController extends Controller
             'rut' => 'required|string|unique:usuario,rut',
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuario,email',
+            'email' => [
+                'required',
+                'email',
+                'unique:usuario,email',
+                'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+            ],
             'password' => 'required|string|min:6|confirmed',
+        ], [
+            'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl',
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
@@ -83,11 +96,39 @@ class UsuariosController extends Controller
     {
         $validated = $request->validate([
             'rut' => 'required|string|unique:usuario,rut',
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuario,email',
+            'nombre' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+            ],
+            'apellido' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:usuario,email',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\.{1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]+@ventasfix\.cl$/'
+            ],
             'password' => 'required|string|min:6|confirmed',
+        ], [
+            'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
+            'apellido.regex' => 'El apellido solo puede contener letras y espacios.',
+            'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl, sin números.',
         ]);
+
+        // Validación adicional para coincidencia exacta
+        $nombre = strtolower(str_replace(' ', '', $request->nombre));
+        $apellido = strtolower(str_replace(' ', '', $request->apellido));
+        $emailEsperado = $nombre . '.' . $apellido . '@ventasfix.cl';
+
+        if (strtolower($request->email) !== $emailEsperado) {
+            return back()->withErrors(['email' => 'El correo debe ser exactamente igual a nombre.apellido@ventasfix.cl, usando los valores ingresados en nombre y apellido.'])->withInput();
+        }
 
         $validated['password'] = Hash::make($validated['password']);
         Usuarios::create($validated);
@@ -116,11 +157,39 @@ class UsuariosController extends Controller
 
         $validated = $request->validate([
             'rut' => 'required|string|unique:usuario,rut,' . $id,
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuario,email,' . $id,
+            'nombre' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+            ],
+            'apellido' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/'
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:usuario,email,' . $id,
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\.{1}[a-zA-ZáéíóúÁÉÍÓÚñÑ]+@ventasfix\.cl$/'
+            ],
             'password' => 'nullable|string|min:6|confirmed',
+        ], [
+            'nombre.regex' => 'El nombre solo puede contener letras y espacios.',
+            'apellido.regex' => 'El apellido solo puede contener letras y espacios.',
+            'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl, sin números.',
         ]);
+
+        // Validación adicional para coincidencia exacta
+        $nombre = strtolower(str_replace(' ', '', $request->nombre));
+        $apellido = strtolower(str_replace(' ', '', $request->apellido));
+        $emailEsperado = $nombre . '.' . $apellido . '@ventasfix.cl';
+
+        if (strtolower($request->email) !== $emailEsperado) {
+            return back()->withErrors(['email' => 'El correo debe ser exactamente igual a nombre.apellido@ventasfix.cl, usando los valores ingresados en nombre y apellido.'])->withInput();
+        }
 
         if (!empty($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);
