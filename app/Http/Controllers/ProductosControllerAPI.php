@@ -71,14 +71,27 @@ class ProductosControllerAPI extends Controller
                 'stock_bajo' => 'required|integer|min:0',
                 'stock_alto' => 'required|integer|min:0',
             ]);
-        } catch (ValidationException $e) { // captura errores de validacion
+        } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
                 'data' => null,
-                'message' => 'todos los campos son obligatorios o el SKU ya existe',
+                'message' => 'Todos los campos son obligatorios o el SKU ya existe',
                 'errors' => $e->errors(),
             ], 422);
+        }
 
+        // Validación adicional: precio_con_iva debe ser igual a precio_neto + 19%
+        $precioNeto = $validated['precio_neto'];
+        $precioConIvaEsperado = round($precioNeto * 1.19, 2);
+        if ($validated['precio_con_iva'] != $precioConIvaEsperado) {
+            return response()->json([
+                'status' => 'error',
+                'data' => null,
+                'message' => "El precio con IVA debe ser igual a precio neto + 19%. El valor correcto es: $precioConIvaEsperado",
+                'errors' => [
+                    'precio_con_iva' => ["El valor correcto es: $precioConIvaEsperado"]
+                ],
+            ], 422);
         }
 
         try {
@@ -88,7 +101,7 @@ class ProductosControllerAPI extends Controller
                 'data' => $producto,
                 'message' => 'Producto creado exitosamente',
             ], 201);
-        } catch (\Exception $e) { // captura cualquier otro error
+        } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
                 'data' => null,

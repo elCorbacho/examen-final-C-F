@@ -37,6 +37,15 @@ class ProductosController extends Controller
             'stock_alto' => 'required|integer|min:0',
         ]);
 
+        // Validación adicional: precio_con_iva debe ser igual a precio_neto + 19%
+        $precioNeto = $request->precio_neto;
+        $precioConIvaEsperado = round($precioNeto * 1.19, 2);
+        if ($request->precio_con_iva != $precioConIvaEsperado) {
+            return back()
+                ->withErrors(['precio_con_iva' => "El precio con IVA debe ser igual a precio neto + 19%. El valor correcto es: $precioConIvaEsperado"])
+                ->withInput();
+        }
+
         $producto = Productos::create($request->all());
         return redirect()->route('productos.index')->with('success', 'Producto creado correctamente.');
     }
@@ -72,6 +81,15 @@ class ProductosController extends Controller
             'stock_bajo' => 'required|integer|min:0',
             'stock_alto' => 'required|integer|min:0',
         ]);
+
+        // Validación adicional: precio_con_iva debe ser igual a precio_neto + 19%
+        $precioNeto = $request->precio_neto;
+        $precioConIvaEsperado = round($precioNeto * 1.19, 2);
+        if ($request->precio_con_iva != $precioConIvaEsperado) {
+            return back()
+                ->withErrors(['precio_con_iva' => "El precio con IVA debe ser igual a precio neto + 19%. El valor correcto es: $precioConIvaEsperado"])
+                ->withInput();
+        }
 
         $cambios = [];
         foreach ($request->except(['_token', '_method']) as $campo => $valor) {
