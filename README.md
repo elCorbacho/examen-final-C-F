@@ -1,4 +1,4 @@
-README PARA CHERRY PICK
+README PARA CHERRY PICK ok
 
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/elCorbacho/examen-final-C-F)
