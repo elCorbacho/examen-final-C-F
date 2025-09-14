@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required placeholder="ejemplo@email.com">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required placeholder="nombre.apellido@ventasfix.cl">
                     </div>
                     <div class="mb-3 form-password-toggle">
                         <label for="password" class="form-label">Contraseña</label>
