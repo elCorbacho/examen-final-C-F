@@ -18,6 +18,8 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('productos', ProductosControllerAPI::class);
     Route::apiResource('clientes', ClientesControllerAPI::class);
     Route::apiResource('usuarios', UsuariosControllerAPI::class);
+
+    // Ruta para manejar rutas no encontradas dentro del middleware
     Route::fallback(function () {
     return response()->json([
         'message' => 'La ruta solicitada no existe en la API.'
@@ -25,6 +27,8 @@ Route::middleware('auth:api')->group(function () {
 });
 });
 
+
+// Ruta para manejar rutas no encontradas fuera del middleware
 Route::fallback(function () {
     return response()->json([
         'message' => 'La ruta solicitada no existe en la API.'
