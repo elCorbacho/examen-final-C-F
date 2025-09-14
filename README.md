@@ -1,4 +1,4 @@
-## Rutas API
+## Rutas API.
 
 Las rutas de la API están definidas en `routes/api.php` y permiten la integración con clientes externos o aplicaciones móviles. Algunas rutas requieren autenticación por token.
 
