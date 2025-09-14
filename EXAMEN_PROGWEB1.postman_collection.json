@@ -1,0 +1,1799 @@
+{
+	"info": {
+		"_postman_id": "2c8c446b-c8e0-434d-a2bd-5f82b8012b9f",
+		"name": "EXAMEN_PROGWEB1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44203539",
+		"_collection_link": "https://andres-8731020.postman.co/workspace/andres's-Workspace~eabfc33a-3c9d-49a6-81de-a2fa2d0e89a8/collection/44203539-2c8c446b-c8e0-434d-a2bd-5f82b8012b9f?action=share&source=collection_link&creator=44203539"
+	},
+	"item": [
+		{
+			"name": "Registro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rut\": \"126877987765\",\r\n  \"nombre\": \"tioto\",\r\n  \"apellido\": \"teito\",\r\n  \"email\": \"jun.pez@ventasfix.cl\",\r\n  \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/store",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"store"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Registro 12-09",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rut\": \"1268758765\",\r\n  \"nombre\": \"toto\",\r\n  \"apellido\": \"teto\",\r\n  \"email\": \"junn.pez@ventasfix.cl\",\r\n  \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/store",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"store"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 20:38:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"user\": {\n        \"rut\": \"1268758765\",\n        \"nombre\": \"toto\",\n        \"apellido\": \"teto\",\n        \"email\": \"junn.pez@ventasfix.cl\",\n        \"updated_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"created_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"id\": 2\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3N0b3JlIiwiaWF0IjoxNzU3NzA5NTA1LCJleHAiOjE3NTc3MTMxMDUsIm5iZiI6MTc1NzcwOTUwNSwianRpIjoiZFNnUHFnU1VLd01nd2RXTSIsInN1YiI6IjIiLCJwcnYiOiJhN2U5ZTc3MWY1YmViZGRkMjU1MjBhZmUyNTEyOTdkNzY5ZjJlOGE0In0.q3o6MiH5OFg-nzuZlh50YvA5_zJ-pwGRR6jSZfi-aLw\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"junn.pez@ventasfix.cl\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login 12-09",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"junn.pez@ventasfix.cl\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 20:38:50 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU3NzA5NTMwLCJleHAiOjE3NTc3MTMxMzAsIm5iZiI6MTc1NzcwOTUzMCwianRpIjoiNUFFR1Q4cURqcjFPNzhiQSIsInN1YiI6IjIiLCJwcnYiOiJhN2U5ZTc3MWY1YmViZGRkMjU1MjBhZmUyNTEyOTdkNzY5ZjJlOGE0In0.gq2Mr5Bcydu-be7KoA-bp4HBjotw_Pf1UUUhbEVOgwI\"\n}"
+				},
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"junn.pez@ventasfix.cl\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:07:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU3NzExMjYwLCJleHAiOjE3NTc3MTQ4NjAsIm5iZiI6MTc1NzcxMTI2MCwianRpIjoieWhuekFBR3NkNHBMWHFoeCIsInN1YiI6IjIiLCJwcnYiOiJhN2U5ZTc3MWY1YmViZGRkMjU1MjBhZmUyNTEyOTdkNzY5ZjJlOGE0In0.9zCqFb-gB6Gs99F_77lO1dcm6LwI4HARtU0CaZ2SmLM\"\n}"
+				}
+			]
+		},
+		{
+			"name": "usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get usuarios 12-09",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 20:44:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"rut\": \"12\",\n        \"nombre\": \"J98\",\n        \"apellido\": \"P5675zz\",\n        \"email\": \"jua6nn.per6ezz@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T05:51:04.000000Z\",\n        \"updated_at\": \"2025-09-12T05:51:04.000000Z\"\n    },\n    {\n        \"id\": 2,\n        \"rut\": \"1268758765\",\n        \"nombre\": \"toto\",\n        \"apellido\": \"teto\",\n        \"email\": \"junn.pez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"updated_at\": \"2025-09-12T20:38:25.000000Z\"\n    },\n    {\n        \"id\": 3,\n        \"rut\": \"12345678-9\",\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"email\": \"juan.perez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 4,\n        \"rut\": \"98765432-1\",\n        \"nombre\": \"Ana\",\n        \"apellido\": \"Torres\",\n        \"email\": \"ana.torres@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 5,\n        \"rut\": \"11222333-4\",\n        \"nombre\": \"Carlos\",\n        \"apellido\": \"Paredes\",\n        \"email\": \"carlos.paredes@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 6,\n        \"rut\": \"55667788-5\",\n        \"nombre\": \"Lucía\",\n        \"apellido\": \"Gómez\",\n        \"email\": \"lucia.gomez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 7,\n        \"rut\": \"22334455-6\",\n        \"nombre\": \"Miguel\",\n        \"apellido\": \"Rojas\",\n        \"email\": \"miguel.rojas@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 8,\n        \"rut\": \"33445566-7\",\n        \"nombre\": \"Sofía\",\n        \"apellido\": \"Ramírez\",\n        \"email\": \"sofia.ramirez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 9,\n        \"rut\": \"44556677-8\",\n        \"nombre\": \"Pedro\",\n        \"apellido\": \"Castillo\",\n        \"email\": \"pedro.castillo@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 10,\n        \"rut\": \"55667788-9\",\n        \"nombre\": \"María\",\n        \"apellido\": \"López\",\n        \"email\": \"maria.lopez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 11,\n        \"rut\": \"66778899-0\",\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Martínez\",\n        \"email\": \"juan.martinez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 12,\n        \"rut\": \"77889900-1\",\n        \"nombre\": \"Valeria\",\n        \"apellido\": \"Díaz\",\n        \"email\": \"valeria.diaz@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    }\n]"
+				},
+				{
+					"name": "get usuarios token 12-09",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:09:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"rut\": \"12\",\n        \"nombre\": \"J98\",\n        \"apellido\": \"P5675zz\",\n        \"email\": \"jua6nn.per6ezz@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T05:51:04.000000Z\",\n        \"updated_at\": \"2025-09-12T05:51:04.000000Z\"\n    },\n    {\n        \"id\": 2,\n        \"rut\": \"126875\",\n        \"nombre\": \"tot\",\n        \"apellido\": \"teto\",\n        \"email\": \"junn.pez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"updated_at\": \"2025-09-12T20:59:43.000000Z\"\n    },\n    {\n        \"id\": 3,\n        \"rut\": \"12345678-9\",\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Pérez\",\n        \"email\": \"juan.perez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 4,\n        \"rut\": \"98765432-1\",\n        \"nombre\": \"Ana\",\n        \"apellido\": \"Torres\",\n        \"email\": \"ana.torres@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 5,\n        \"rut\": \"11222333-4\",\n        \"nombre\": \"Carlos\",\n        \"apellido\": \"Paredes\",\n        \"email\": \"carlos.paredes@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 6,\n        \"rut\": \"55667788-5\",\n        \"nombre\": \"Lucía\",\n        \"apellido\": \"Gómez\",\n        \"email\": \"lucia.gomez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 7,\n        \"rut\": \"22334455-6\",\n        \"nombre\": \"Miguel\",\n        \"apellido\": \"Rojas\",\n        \"email\": \"miguel.rojas@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 8,\n        \"rut\": \"33445566-7\",\n        \"nombre\": \"Sofía\",\n        \"apellido\": \"Ramírez\",\n        \"email\": \"sofia.ramirez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 9,\n        \"rut\": \"44556677-8\",\n        \"nombre\": \"Pedro\",\n        \"apellido\": \"Castillo\",\n        \"email\": \"pedro.castillo@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 10,\n        \"rut\": \"55667788-9\",\n        \"nombre\": \"María\",\n        \"apellido\": \"López\",\n        \"email\": \"maria.lopez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 11,\n        \"rut\": \"66778899-0\",\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Martínez\",\n        \"email\": \"juan.martinez@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 12,\n        \"rut\": \"77889900-1\",\n        \"nombre\": \"Valeria\",\n        \"apellido\": \"Díaz\",\n        \"email\": \"valeria.diaz@ventasfix.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "usuarios ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuarios/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get usuarios token id 12-09",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/usuarios/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 20:51:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"rut\": \"12\",\n    \"nombre\": \"J98\",\n    \"apellido\": \"P5675zz\",\n    \"email\": \"jua6nn.per6ezz@ventasfix.cl\",\n    \"created_at\": \"2025-09-12T05:51:04.000000Z\",\n    \"updated_at\": \"2025-09-12T05:51:04.000000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "usuario id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rut\": \"126\",\r\n  \"nombre\": \"tot\",\r\n  \"apellido\": \"teto\",\r\n  \"email\": \"junn.pez@ventasfix.cl\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuarios/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Registro 12-09",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rut\": \"1268758765\",\r\n  \"nombre\": \"toto\",\r\n  \"apellido\": \"teto\",\r\n  \"email\": \"junn.pez@ventasfix.cl\",\r\n  \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/store",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"store"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 20:38:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"user\": {\n        \"rut\": \"1268758765\",\n        \"nombre\": \"toto\",\n        \"apellido\": \"teto\",\n        \"email\": \"junn.pez@ventasfix.cl\",\n        \"updated_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"created_at\": \"2025-09-12T20:38:25.000000Z\",\n        \"id\": 2\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3N0b3JlIiwiaWF0IjoxNzU3NzA5NTA1LCJleHAiOjE3NTc3MTMxMDUsIm5iZiI6MTc1NzcwOTUwNSwianRpIjoiZFNnUHFnU1VLd01nd2RXTSIsInN1YiI6IjIiLCJwcnYiOiJhN2U5ZTc3MWY1YmViZGRkMjU1MjBhZmUyNTEyOTdkNzY5ZjJlOGE0In0.q3o6MiH5OFg-nzuZlh50YvA5_zJ-pwGRR6jSZfi-aLw\"\n}"
+				}
+			]
+		},
+		{
+			"name": "usuario token",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/usuarios/9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"9"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/usuarios/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"usuarios",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:10:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario eliminado con éxito\"\n}"
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/productos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"productos",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:12:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"sku\": \"SKU001\",\n        \"nombre\": \"Producto 1\",\n        \"descripcion_corta\": \"Desc corta 1\",\n        \"descripcion_larga\": \"Descripción larga del producto 1\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1000.00\",\n        \"precio_con_iva\": \"1190.00\",\n        \"stock_actual\": 50,\n        \"stock_minimo\": 10,\n        \"stock_bajo\": 5,\n        \"stock_alto\": 100,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 2,\n        \"sku\": \"SKU002\",\n        \"nombre\": \"Producto 2\",\n        \"descripcion_corta\": \"Desc corta 2\",\n        \"descripcion_larga\": \"Descripción larga del producto 2\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"2000.00\",\n        \"precio_con_iva\": \"2380.00\",\n        \"stock_actual\": 30,\n        \"stock_minimo\": 8,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 80,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 3,\n        \"sku\": \"SKU003\",\n        \"nombre\": \"Producto 3\",\n        \"descripcion_corta\": \"Desc corta 3\",\n        \"descripcion_larga\": \"Descripción larga del producto 3\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1500.00\",\n        \"precio_con_iva\": \"1785.00\",\n        \"stock_actual\": 20,\n        \"stock_minimo\": 5,\n        \"stock_bajo\": 2,\n        \"stock_alto\": 50,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 4,\n        \"sku\": \"SKU004\",\n        \"nombre\": \"Producto 4\",\n        \"descripcion_corta\": \"Desc corta 4\",\n        \"descripcion_larga\": \"Descripción larga del producto 4\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"500.00\",\n        \"precio_con_iva\": \"595.00\",\n        \"stock_actual\": 60,\n        \"stock_minimo\": 12,\n        \"stock_bajo\": 6,\n        \"stock_alto\": 120,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 5,\n        \"sku\": \"SKU005\",\n        \"nombre\": \"Producto 5\",\n        \"descripcion_corta\": \"Desc corta 5\",\n        \"descripcion_larga\": \"Descripción larga del producto 5\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"3000.00\",\n        \"precio_con_iva\": \"3570.00\",\n        \"stock_actual\": 15,\n        \"stock_minimo\": 4,\n        \"stock_bajo\": 2,\n        \"stock_alto\": 40,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 6,\n        \"sku\": \"SKU006\",\n        \"nombre\": \"Producto 6\",\n        \"descripcion_corta\": \"Desc corta 6\",\n        \"descripcion_larga\": \"Descripción larga del producto 6\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1200.00\",\n        \"precio_con_iva\": \"1428.00\",\n        \"stock_actual\": 25,\n        \"stock_minimo\": 6,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 60,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 7,\n        \"sku\": \"SKU007\",\n        \"nombre\": \"Producto 7\",\n        \"descripcion_corta\": \"Desc corta 7\",\n        \"descripcion_larga\": \"Descripción larga del producto 7\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"800.00\",\n        \"precio_con_iva\": \"952.00\",\n        \"stock_actual\": 40,\n        \"stock_minimo\": 9,\n        \"stock_bajo\": 4,\n        \"stock_alto\": 90,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 8,\n        \"sku\": \"SKU008\",\n        \"nombre\": \"Producto 8\",\n        \"descripcion_corta\": \"Desc corta 8\",\n        \"descripcion_larga\": \"Descripción larga del producto 8\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"2500.00\",\n        \"precio_con_iva\": \"2975.00\",\n        \"stock_actual\": 35,\n        \"stock_minimo\": 7,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 70,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 9,\n        \"sku\": \"SKU009\",\n        \"nombre\": \"Producto 9\",\n        \"descripcion_corta\": \"Desc corta 9\",\n        \"descripcion_larga\": \"Descripción larga del producto 9\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1800.00\",\n        \"precio_con_iva\": \"2142.00\",\n        \"stock_actual\": 10,\n        \"stock_minimo\": 2,\n        \"stock_bajo\": 1,\n        \"stock_alto\": 20,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 10,\n        \"sku\": \"SKU010\",\n        \"nombre\": \"Producto 10\",\n        \"descripcion_corta\": \"Desc corta 10\",\n        \"descripcion_larga\": \"Descripción larga del producto 10\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"4000.00\",\n        \"precio_con_iva\": \"4760.00\",\n        \"stock_actual\": 12,\n        \"stock_minimo\": 3,\n        \"stock_bajo\": 1,\n        \"stock_alto\": 30,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    }\n]"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:13:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sku\": \"SKU001\",\n    \"nombre\": \"Producto 1\",\n    \"descripcion_corta\": \"Desc corta 1\",\n    \"descripcion_larga\": \"Descripción larga del producto 1\",\n    \"imagen_url\": \"https://via.placeholder.com/150\",\n    \"precio_neto\": \"1000.00\",\n    \"precio_con_iva\": \"1190.00\",\n    \"stock_actual\": 50,\n    \"stock_minimo\": 10,\n    \"stock_bajo\": 5,\n    \"stock_alto\": 100,\n    \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n    \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "productos ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/productos/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"productos",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:12:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"sku\": \"SKU001\",\n        \"nombre\": \"Producto 1\",\n        \"descripcion_corta\": \"Desc corta 1\",\n        \"descripcion_larga\": \"Descripción larga del producto 1\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1000.00\",\n        \"precio_con_iva\": \"1190.00\",\n        \"stock_actual\": 50,\n        \"stock_minimo\": 10,\n        \"stock_bajo\": 5,\n        \"stock_alto\": 100,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 2,\n        \"sku\": \"SKU002\",\n        \"nombre\": \"Producto 2\",\n        \"descripcion_corta\": \"Desc corta 2\",\n        \"descripcion_larga\": \"Descripción larga del producto 2\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"2000.00\",\n        \"precio_con_iva\": \"2380.00\",\n        \"stock_actual\": 30,\n        \"stock_minimo\": 8,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 80,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 3,\n        \"sku\": \"SKU003\",\n        \"nombre\": \"Producto 3\",\n        \"descripcion_corta\": \"Desc corta 3\",\n        \"descripcion_larga\": \"Descripción larga del producto 3\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1500.00\",\n        \"precio_con_iva\": \"1785.00\",\n        \"stock_actual\": 20,\n        \"stock_minimo\": 5,\n        \"stock_bajo\": 2,\n        \"stock_alto\": 50,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 4,\n        \"sku\": \"SKU004\",\n        \"nombre\": \"Producto 4\",\n        \"descripcion_corta\": \"Desc corta 4\",\n        \"descripcion_larga\": \"Descripción larga del producto 4\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"500.00\",\n        \"precio_con_iva\": \"595.00\",\n        \"stock_actual\": 60,\n        \"stock_minimo\": 12,\n        \"stock_bajo\": 6,\n        \"stock_alto\": 120,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 5,\n        \"sku\": \"SKU005\",\n        \"nombre\": \"Producto 5\",\n        \"descripcion_corta\": \"Desc corta 5\",\n        \"descripcion_larga\": \"Descripción larga del producto 5\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"3000.00\",\n        \"precio_con_iva\": \"3570.00\",\n        \"stock_actual\": 15,\n        \"stock_minimo\": 4,\n        \"stock_bajo\": 2,\n        \"stock_alto\": 40,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 6,\n        \"sku\": \"SKU006\",\n        \"nombre\": \"Producto 6\",\n        \"descripcion_corta\": \"Desc corta 6\",\n        \"descripcion_larga\": \"Descripción larga del producto 6\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1200.00\",\n        \"precio_con_iva\": \"1428.00\",\n        \"stock_actual\": 25,\n        \"stock_minimo\": 6,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 60,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 7,\n        \"sku\": \"SKU007\",\n        \"nombre\": \"Producto 7\",\n        \"descripcion_corta\": \"Desc corta 7\",\n        \"descripcion_larga\": \"Descripción larga del producto 7\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"800.00\",\n        \"precio_con_iva\": \"952.00\",\n        \"stock_actual\": 40,\n        \"stock_minimo\": 9,\n        \"stock_bajo\": 4,\n        \"stock_alto\": 90,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 8,\n        \"sku\": \"SKU008\",\n        \"nombre\": \"Producto 8\",\n        \"descripcion_corta\": \"Desc corta 8\",\n        \"descripcion_larga\": \"Descripción larga del producto 8\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"2500.00\",\n        \"precio_con_iva\": \"2975.00\",\n        \"stock_actual\": 35,\n        \"stock_minimo\": 7,\n        \"stock_bajo\": 3,\n        \"stock_alto\": 70,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 9,\n        \"sku\": \"SKU009\",\n        \"nombre\": \"Producto 9\",\n        \"descripcion_corta\": \"Desc corta 9\",\n        \"descripcion_larga\": \"Descripción larga del producto 9\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"1800.00\",\n        \"precio_con_iva\": \"2142.00\",\n        \"stock_actual\": 10,\n        \"stock_minimo\": 2,\n        \"stock_bajo\": 1,\n        \"stock_alto\": 20,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 10,\n        \"sku\": \"SKU010\",\n        \"nombre\": \"Producto 10\",\n        \"descripcion_corta\": \"Desc corta 10\",\n        \"descripcion_larga\": \"Descripción larga del producto 10\",\n        \"imagen_url\": \"https://via.placeholder.com/150\",\n        \"precio_neto\": \"4000.00\",\n        \"precio_con_iva\": \"4760.00\",\n        \"stock_actual\": 12,\n        \"stock_minimo\": 3,\n        \"stock_bajo\": 1,\n        \"stock_alto\": 30,\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sku\": \"PROD-001\",\r\n  \"nombre\": \"Teclado Mecánico\",\r\n  \"descripcion_corta\": \"Teclado compacto RGB\",\r\n  \"descripcion_larga\": \"Teclado mecánico compacto con retroiluminación RGB y switches intercambiables.\",\r\n  \"imagen_url\": \"https://ejemplo.com/imagenes/teclado.jpg\",\r\n  \"precio_neto\": 40000,\r\n  \"precio_con_iva\": 47600,\r\n  \"stock_actual\": 25,\r\n  \"stock_minimo\": 5,\r\n  \"stock_bajo\": 10,\r\n  \"stock_alto\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/productos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"productos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sku\": \"PROD-001\",\r\n  \"nombre\": \"Teclado Mecánico\",\r\n  \"descripcion_corta\": \"Teclado compacto RGB\",\r\n  \"descripcion_larga\": \"Teclado mecánico compacto con retroiluminación RGB y switches intercambiables.\",\r\n  \"imagen_url\": \"https://ejemplo.com/imagenes/teclado.jpg\",\r\n  \"precio_neto\": 40000,\r\n  \"precio_con_iva\": 47600,\r\n  \"stock_actual\": 25,\r\n  \"stock_minimo\": 5,\r\n  \"stock_bajo\": 10,\r\n  \"stock_alto\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:15:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"sku\": \"PROD-001\",\n    \"nombre\": \"Teclado Mecánico\",\n    \"descripcion_corta\": \"Teclado compacto RGB\",\n    \"descripcion_larga\": \"Teclado mecánico compacto con retroiluminación RGB y switches intercambiables.\",\n    \"imagen_url\": \"https://ejemplo.com/imagenes/teclado.jpg\",\n    \"precio_neto\": 40000,\n    \"precio_con_iva\": 47600,\n    \"stock_actual\": 25,\n    \"stock_minimo\": 5,\n    \"stock_bajo\": 10,\n    \"stock_alto\": 100,\n    \"updated_at\": \"2025-09-12T21:15:44.000000Z\",\n    \"created_at\": \"2025-09-12T21:15:44.000000Z\",\n    \"id\": 11\n}"
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descripcion_larga\": \"Teclado mecánico laser compacto con retroiluminación RGB y switches intercambiables.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/productos/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"productos",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion_larga\": \"Teclado mecánico laser compacto con retroiluminación RGB y switches intercambiables.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:17:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sku\": \"SKU001\",\n    \"nombre\": \"Producto 1\",\n    \"descripcion_corta\": \"Desc corta 1\",\n    \"descripcion_larga\": \"Teclado mecánico laser compacto con retroiluminación RGB y switches intercambiables.\",\n    \"imagen_url\": \"https://via.placeholder.com/150\",\n    \"precio_neto\": \"1000.00\",\n    \"precio_con_iva\": \"1190.00\",\n    \"stock_actual\": 50,\n    \"stock_minimo\": 10,\n    \"stock_bajo\": 5,\n    \"stock_alto\": 100,\n    \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n    \"updated_at\": \"2025-09-12T21:17:04.000000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/productos/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"productos",
+						"11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/productos/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"productos",
+								"11"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:17:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Producto eliminado correctamente\"\n}"
+				}
+			]
+		},
+		{
+			"name": "clientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:19:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"rut_empresa\": \"76.123.456-7\",\n        \"rubro\": \"Tecnología\",\n        \"razon_social\": \"Tech Solutions SPA\",\n        \"telefono\": \"912345678\",\n        \"direccion\": \"Av. Siempre Viva 123\",\n        \"contacto_nombre\": \"Juan Pérez\",\n        \"contacto_correo\": \"juan@techspa.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 2,\n        \"rut_empresa\": \"77.234.567-8\",\n        \"rubro\": \"Alimentos\",\n        \"razon_social\": \"Alimentos del Sur Ltda\",\n        \"telefono\": \"922345678\",\n        \"direccion\": \"Calle Falsa 456\",\n        \"contacto_nombre\": \"María López\",\n        \"contacto_correo\": \"maria@alimentosur.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 3,\n        \"rut_empresa\": \"78.345.678-9\",\n        \"rubro\": \"Construcción\",\n        \"razon_social\": \"Constructora Andes S.A.\",\n        \"telefono\": \"932345678\",\n        \"direccion\": \"Pasaje Central 789\",\n        \"contacto_nombre\": \"Pedro González\",\n        \"contacto_correo\": \"pedro@andesconstruccion.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 4,\n        \"rut_empresa\": \"79.456.789-0\",\n        \"rubro\": \"Educación\",\n        \"razon_social\": \"Colegio Futuro\",\n        \"telefono\": \"942345678\",\n        \"direccion\": \"Camino Real 101\",\n        \"contacto_nombre\": \"Ana Torres\",\n        \"contacto_correo\": \"ana@colegiofuturo.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 5,\n        \"rut_empresa\": \"80.567.890-1\",\n        \"rubro\": \"Salud\",\n        \"razon_social\": \"Clínica Vida\",\n        \"telefono\": \"952345678\",\n        \"direccion\": \"Av. Salud 202\",\n        \"contacto_nombre\": \"Carlos Ruiz\",\n        \"contacto_correo\": \"carlos@clinicavida.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 6,\n        \"rut_empresa\": \"81.678.901-2\",\n        \"rubro\": \"Transporte\",\n        \"razon_social\": \"Transporte Express\",\n        \"telefono\": \"962345678\",\n        \"direccion\": \"Ruta 5 Sur Km 15\",\n        \"contacto_nombre\": \"Sofía Martínez\",\n        \"contacto_correo\": \"sofia@transportexpress.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 7,\n        \"rut_empresa\": \"82.789.012-3\",\n        \"rubro\": \"Retail\",\n        \"razon_social\": \"Comercial Centro\",\n        \"telefono\": \"972345678\",\n        \"direccion\": \"Mall Central Local 12\",\n        \"contacto_nombre\": \"Felipe Castro\",\n        \"contacto_correo\": \"felipe@comercialcentro.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 8,\n        \"rut_empresa\": \"83.890.123-4\",\n        \"rubro\": \"Turismo\",\n        \"razon_social\": \"Viajes y Turismo Ltda\",\n        \"telefono\": \"982345678\",\n        \"direccion\": \"Plaza Principal 5\",\n        \"contacto_nombre\": \"Laura Herrera\",\n        \"contacto_correo\": \"laura@viajesturismo.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 9,\n        \"rut_empresa\": \"84.901.234-5\",\n        \"rubro\": \"Finanzas\",\n        \"razon_social\": \"Finanzas Seguras SPA\",\n        \"telefono\": \"992345678\",\n        \"direccion\": \"Edificio Financiero Piso 8\",\n        \"contacto_nombre\": \"Diego Morales\",\n        \"contacto_correo\": \"diego@finanzasseguras.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    },\n    {\n        \"id\": 10,\n        \"rut_empresa\": \"85.012.345-6\",\n        \"rubro\": \"Legal\",\n        \"razon_social\": \"Estudio Jurídico Legal\",\n        \"telefono\": \"902345678\",\n        \"direccion\": \"Calle Justicia 321\",\n        \"contacto_nombre\": \"Valentina Rojas\",\n        \"contacto_correo\": \"valentina@estudiolegal.cl\",\n        \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n        \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "clientes ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientes/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:19:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"rut_empresa\": \"76.123.456-7\",\n    \"rubro\": \"Tecnología\",\n    \"razon_social\": \"Tech Solutions SPA\",\n    \"telefono\": \"912345678\",\n    \"direccion\": \"Av. Siempre Viva 123\",\n    \"contacto_nombre\": \"Juan Pérez\",\n    \"contacto_correo\": \"juan@techspa.cl\",\n    \"created_at\": \"2025-09-12T20:44:52.000000Z\",\n    \"updated_at\": \"2025-09-12T20:44:52.000000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rut_empresa\": \"9998888-1\",\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones Digitales PA\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123, Santiago\",\r\n  \"contacto_nombre\": \"Ana Pérez\",\r\n  \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rut_empresa\": \"76.543.290-9\",\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones Digitales PA\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123, Santiago\",\r\n  \"contacto_nombre\": \"Ana Pérez\",\r\n  \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:23:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rut_empresa\": \"76.543.290-9\",\n    \"rubro\": \"Tecnología\",\n    \"razon_social\": \"Soluciones Digitales PA\",\n    \"telefono\": \"+56912345678\",\n    \"direccion\": \"Av. Siempre Viva 123, Santiago\",\n    \"contacto_nombre\": \"Ana Pérez\",\n    \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\",\n    \"updated_at\": \"2025-09-12T21:23:08.000000Z\",\n    \"created_at\": \"2025-09-12T21:23:08.000000Z\",\n    \"id\": 12\n}"
+				}
+			]
+		},
+		{
+			"name": "cliente",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones DigitPA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientes/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rut_empresa\": \"76.543.290-9\",\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones Digitales PA\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123, Santiago\",\r\n  \"contacto_nombre\": \"Ana Pérez\",\r\n  \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:23:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rut_empresa\": \"76.543.290-9\",\n    \"rubro\": \"Tecnología\",\n    \"razon_social\": \"Soluciones Digitales PA\",\n    \"telefono\": \"+56912345678\",\n    \"direccion\": \"Av. Siempre Viva 123, Santiago\",\n    \"contacto_nombre\": \"Ana Pérez\",\n    \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\",\n    \"updated_at\": \"2025-09-12T21:23:08.000000Z\",\n    \"created_at\": \"2025-09-12T21:23:08.000000Z\",\n    \"id\": 12\n}"
+				}
+			]
+		},
+		{
+			"name": "cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rut_empresa\": \"76.543.290-9\",\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones Digitales PA\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123, Santiago\",\r\n  \"contacto_nombre\": \"Ana Pérez\",\r\n  \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientes/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes",
+						"11"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rut_empresa\": \"76.543.290-9\",\r\n  \"rubro\": \"Tecnología\",\r\n  \"razon_social\": \"Soluciones Digitales PA\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123, Santiago\",\r\n  \"contacto_nombre\": \"Ana Pérez\",\r\n  \"contacto_correo\": \"ana.perez@solucionesdigitales.cl\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes",
+								"11"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Sep 2025 21:25:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Cliente eliminado correctamente\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Catch de rutas erroneas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU3NzExMjYwLCJleHAiOjE3NTc3MTQ4NjAsIm5iZiI6MTc1NzcxMTI2MCwianRpIjoieWhuekFBR3NkNHBMWHFoeCIsInN1YiI6IjIiLCJwcnYiOiJhN2U5ZTc3MWY1YmViZGRkMjU1MjBhZmUyNTEyOTdkNzY5ZjJlOGE0In0.9zCqFb-gB6Gs99F_77lO1dcm6LwI4HARtU0CaZ2SmLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clientesii",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientesii"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU3NzI4MDgxLCJleHAiOjE3NTc3MzE2ODEsIm5iZiI6MTc1NzcyODA4MSwianRpIjoiSEMyd2VLMHBZMnoxbVRSViIsInN1YiI6IjExIiwicHJ2IjoiNTU0YzVhZWE0Y2IyNTQwMTllMTIwNjdhN2NhNTQ3ZjY3NWQ1NDRjYSJ9.ZmoGw1zTlSmoccTTWHljkpdsKnRGCt3RBHpZvMaTZeA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": ""
+		}
+	]
+}
