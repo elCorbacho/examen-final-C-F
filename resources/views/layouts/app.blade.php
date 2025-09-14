@@ -160,31 +160,31 @@
         <aside id="layout-menu" class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
           <div class="container-xxl d-flex h-100">
             <ul class="menu-inner py-1">
-              <li class="menu-item">
+              <li class="menu-item {{ request()->routeIs('login') ? 'active' : '' }}">
                 <a href="{{ route('login') }}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-login"></i>
                   <div>Login</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ request()->is('usuarios*') ? 'active' : '' }}">
                 <a href="{{ route('usuarios.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-users"></i>
                   <div>Usuarios</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ request()->is('productos*') ? 'active' : '' }}">
                 <a href="{{ route('productos.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-package"></i>
                   <div>Productos</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ request()->is('clientes*') ? 'active' : '' }}">
                 <a href="{{ route('clientes.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-address-book"></i>
                   <div>Clientes</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-smart-home"></i>
                   <div>Dashboard</div>

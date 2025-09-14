@@ -41,13 +41,15 @@
                                             <td>{{ $usuario->apellido }}</td>
                                             <td>{{ $usuario->email }}</td>
                                             <td>
-                                                <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm me-1">Ver</a>
-                                                <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm me-1">Editar</a>
-                                                <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</button>
-                                                </form>
+                                                <div class="btn-group" role="group" aria-label="Acciones">
+                                                    <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm" title="Ver"><i class="ti ti-eye"></i></a>
+                                                    <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm" title="Editar"><i class="ti ti-pencil"></i></a>
+                                                    <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm" title="Eliminar" onclick="return confirm('¿Seguro?')"><i class="ti ti-trash"></i></button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
