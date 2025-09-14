@@ -24,10 +24,6 @@ Route::post('/logout', [UsuariosController::class, 'logout'])->name('logout');
 Route::get('/register', [UsuariosController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UsuariosController::class, 'register'])->name('register.post');
 
-Route::get('/index', function () {
-    return view('layouts.index');
-});
-
 
 // Rutas protegidas por sesión
 Route::middleware('auth')->group(function () {
