@@ -11,11 +11,7 @@ use \Illuminate\Validation\ValidationException;
 
 class UsuariosControllerAPI extends Controller
 {
-
-    //MENSAJES DE ERROR Y EXITO EN FORMATO JSON OK
-
-// realiza un post de un usuario
-// no se encuentra protegido por autenticacion
+    // POST: Crear usuario (API)
     public function store(Request $request)
     {
         try {
@@ -23,11 +19,18 @@ class UsuariosControllerAPI extends Controller
                 'rut' => 'required|string|unique:usuario,rut',
                 'nombre' => 'required|string|max:255',
                 'apellido' => 'required|string|max:255',
-                'email' => 'required|email|unique:usuario,email|max:255',
+                'email' => [
+                    'required',
+                    'email',
+                    'unique:usuario,email',
+                    'max:255',
+                    'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+                ],
                 'password' => 'required|string|min:6'
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
-                'email.unique' => 'El usuario ya existe con ese correo electrónico.'
+                'email.unique' => 'El usuario ya existe con ese correo electrónico.',
+                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl'
             ]);
         } catch (ValidationException $e) {
             return response()->json([
@@ -51,10 +54,7 @@ class UsuariosControllerAPI extends Controller
             'user' => $user, 'token' => $token], 201);
     }
 
-
-// realiza un post para login
-// no se encuentra protegido por autenticacion
-// devuelve un token JWT si las credenciales son correctas
+    // POST: Login API
     public function loginApi(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -70,12 +70,9 @@ class UsuariosControllerAPI extends Controller
         ], 200);
     }
 
-
-
-    // get de todos los usuarios
+    // GET: Listar usuarios
     public function index()
     {
-        //
         $usuarios = Usuarios::all();
         if($usuarios->isEmpty()) {
             return response()->json([
@@ -91,12 +88,9 @@ class UsuariosControllerAPI extends Controller
         ], 200);
     }
 
-
-
-    // get de un usuario por id
+    // GET: Mostrar usuario por ID
     public function show(string $id)
     {
-        //
         $usuario = Usuarios::find($id);
         if (!$usuario) {
             return response()->json([
@@ -113,79 +107,7 @@ class UsuariosControllerAPI extends Controller
             ], 200);
     }
 
-
-
-
-    // update de un usuario por id
-public function update(Request $request, string $id)
-{
-    $usuario = Usuarios::find($id);
-    if (!$usuario) {
-        return response()->json([
-            'status' => 'error',
-            'data' => null,
-            'message' => 'Usuario no encontrado'
-        ], 404);
-    }
-
-    try {
-        $validated = $request->validate([
-            'rut' => 'sometimes|required|string|unique:usuario,rut,' . $id,
-            'nombre' => 'sometimes|required|string|max:255',
-            'apellido' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:usuario,email,' . $id,
-            'password' => 'sometimes|required|string|min:6',
-        ], [
-            'nombre.unique' => 'El nombre de usuario ya está en uso.',
-            'email.unique' => 'El usuario ya existe con ese correo electrónico.'
-        ]);
-    } catch (ValidationException $e) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Error de validación',
-            'errors' => $e->errors()
-        ], 422);
-    }
-
-    // Guardar valores originales antes de actualizar
-    $original = $usuario->only(array_keys($validated));
-
-    // Si se actualiza la contraseña, hashearla
-    if (isset($validated['password'])) {
-        $validated['password'] = Hash::make($validated['password']);
-    }
-
-    $usuario->update($validated);
-
-    // Mensajes detallados de los cambios
-    $mensajes = [];
-    foreach ($validated as $campo => $valor) {
-        $nombreCampo = match ($campo) {
-            'rut' => 'RUT',
-            'nombre' => 'Nombre',
-            'apellido' => 'Apellido',
-            'email' => 'Correo electrónico',
-            'password' => 'Contraseña',
-            default => ucfirst($campo),
-        };
-
-        $valorAnterior = $original[$campo] ?? '(sin valor anterior)';
-        // No mostrar el valor de la contraseña
-        if ($campo === 'password') {
-            $mensajes[] = "El campo '$nombreCampo' fue actualizado.";
-        } else {
-            $mensajes[] = "El campo '$nombreCampo' fue actualizado de '$valorAnterior' a '$valor'.";
-        }
-    }
-
-    return response()->json([
-        'status' => 'success',
-        'data' => $usuario,
-        'mensajes' => $mensajes,
-    ], 200);
-}
-
-    /*
+    // PUT/PATCH: Actualizar usuario por ID
     public function update(Request $request, string $id)
     {
         $usuario = Usuarios::find($id);
@@ -198,15 +120,23 @@ public function update(Request $request, string $id)
         }
 
         try {
-            $request->validate([
+            $validated = $request->validate([
                 'rut' => 'sometimes|required|string|unique:usuario,rut,' . $id,
                 'nombre' => 'sometimes|required|string|max:255',
                 'apellido' => 'sometimes|required|string|max:255',
-                'email' => 'sometimes|required|email|unique:usuario,email,' . $id,
+                'email' => [
+                    'sometimes',
+                    'required',
+                    'email',
+                    'unique:usuario,email,' . $id,
+                    'max:255',
+                    'regex:/^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@ventasfix\.cl$/'
+                ],
                 'password' => 'sometimes|required|string|min:6',
             ], [
                 'nombre.unique' => 'El nombre de usuario ya está en uso.',
-                'email.unique' => 'El usuario ya existe con ese correo electrónico.'
+                'email.unique' => 'El usuario ya existe con ese correo electrónico.',
+                'email.regex' => 'El correo debe tener el formato nombre.apellido@ventasfix.cl'
             ]);
         } catch (ValidationException $e) {
             return response()->json([
@@ -216,26 +146,41 @@ public function update(Request $request, string $id)
             ], 422);
         }
 
-        $validated = $request->validate([
-            'rut' => 'sometimes|required|string|unique:usuario,rut,' . $id,
-            'nombre' => 'sometimes|required|string|max:255',
-            'apellido' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:usuario,email,' . $id,
-            'password' => 'sometimes|required|string|min:6',
-        ]);
+        $original = $usuario->only(array_keys($validated));
+
         if (isset($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);
         }
+
         $usuario->update($validated);
-        return response()->json($usuario);
+
+        $mensajes = [];
+        foreach ($validated as $campo => $valor) {
+            $nombreCampo = match ($campo) {
+                'rut' => 'RUT',
+                'nombre' => 'Nombre',
+                'apellido' => 'Apellido',
+                'email' => 'Correo electrónico',
+                'password' => 'Contraseña',
+                default => ucfirst($campo),
+            };
+
+            $valorAnterior = $original[$campo] ?? '(sin valor anterior)';
+            if ($campo === 'password') {
+                $mensajes[] = "El campo '$nombreCampo' fue actualizado.";
+            } else {
+                $mensajes[] = "El campo '$nombreCampo' fue actualizado de '$valorAnterior' a '$valor'.";
+            }
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $usuario,
+            'mensajes' => $mensajes,
+        ], 200);
     }
-    */
 
-
-
-
-
-    // delete de un usuario por id
+    // DELETE: Eliminar usuario por ID
     public function destroy(string $id)
     {
         $usuario = Usuarios::find($id);
